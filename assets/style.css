@@ -1,0 +1,605 @@
+# ===================================
+# FILE: assets/style.css
+# ===================================
+
+/* 🎨 Custom CSS Styles for Loan Approval Prediction System */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ============================================
+   🌟 GLOBAL STYLES
+   ============================================ */
+
+:root {
+    /* 🎨 Color Palette */
+    --primary-color: #1f77b4;
+    --primary-dark: #1565c0;
+    --primary-light: #64b5f6;
+    --secondary-color: #ff7f0e;
+    --success-color: #4caf50;
+    --success-dark: #45a049;
+    --error-color: #f44336;
+    --error-dark: #da190b;
+    --warning-color: #ff9800;
+    --info-color: #2196f3;
+    
+    /* 🎯 Neutral Colors */
+    --background-color: #f8f9fa;
+    --surface-color: #ffffff;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --border-light: #e9ecef;
+    
+    /* 📏 Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
+    
+    /* 🔤 Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 2.5rem;
+    
+    /* 🌈 Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+    --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.18);
+    
+    /* 📐 Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    --radius-full: 9999px;
+}
+
+/* ============================================
+   🏠 MAIN LAYOUT
+   ============================================ */
+
+.main-header {
+    font-family: var(--font-family);
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    font-family: var(--font-family);
+}
+
+/* ============================================
+   📊 METRIC CARDS
+   ============================================ */
+
+.metric-card {
+    background: linear-gradient(135deg, var(--surface-color), var(--background-color));
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--border-light);
+    border-left: 5px solid var(--primary-color);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-light);
+}
+
+.metric-card h3 {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+.metric-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ============================================
+   🔮 PREDICTION CARDS
+   ============================================ */
+
+.prediction-card {
+    padding: var(--spacing-xxl);
+    border-radius: var(--radius-2xl);
+    text-align: center;
+    margin: var(--spacing-lg) 0;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+    animation: slideInUp 0.6s ease-out;
+}
+
+.prediction-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.approved {
+    background: linear-gradient(135deg, var(--success-color), var(--success-dark));
+    color: white;
+    border: 3px solid var(--success-color);
+}
+
+.rejected {
+    background: linear-gradient(135deg, var(--error-color), var(--error-dark));
+    color: white;
+    border: 3px solid var(--error-color);
+}
+
+.prediction-card h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.prediction-card h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 500;
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* ============================================
+   📝 FORMS & INPUTS
+   ============================================ */
+
+.stSelectbox > div > div,
+.stNumberInput > div > div > input,
+.stTextInput > div > div > input {
+    background: var(--surface-color) !important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    padding: var(--spacing-sm) var(--spacing-md) !important;
+    font-family: var(--font-family) !important;
+    font-size: var(--font-size-base) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.stSelectbox > div > div:focus-within,
+.stNumberInput > div > div > input:focus,
+.stTextInput > div > div > input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(31, 119, 180, 0.1) !important;
+    background: var(--surface-color) !important;
+}
+
+.stButton > button {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: var(--radius-xl) !important;
+    padding: var(--spacing-md) var(--spacing-xl) !important;
+    font-family: var(--font-family) !important;
+    font-weight: 600 !important;
+    font-size: var(--font-size-lg) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: var(--shadow-md) !important;
+    text-transform: none !important;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-lg) !important;
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color)) !important;
+}
+
+/* ============================================
+   📈 CHARTS & VISUALIZATIONS
+   ============================================ */
+
+.chart-container {
+    background: var(--surface-color);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-lg) 0;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-light);
+}
+
+.plotly-graph-div {
+    border-radius: var(--radius-md) !important;
+}
+
+/* ============================================
+   📊 METRICS & STATISTICS
+   ============================================ */
+
+.stMetric {
+    background: var(--surface-color) !important;
+    border: 2px solid var(--border-light) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: all 0.3s ease !important;
+}
+
+.stMetric:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-md) !important;
+    border-color: var(--primary-light) !important;
+}
+
+.stMetric [data-testid="metric-container"] > div:first-child {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.stMetric [data-testid="metric-container"] > div:nth-child(2) {
+    color: var(--primary-color) !important;
+    font-size: var(--font-size-2xl) !important;
+    font-weight: 700 !important;
+    margin: var(--spacing-xs) 0 !important;
+}
+
+/* ============================================
+   🎯 PROGRESS BARS
+   ============================================ */
+
+.stProgress > div > div > div {
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light)) !important;
+    border-radius: var(--radius-full) !important;
+    height: 12px !important;
+}
+
+.stProgress > div > div {
+    background: var(--border-light) !important;
+    border-radius: var(--radius-full) !important;
+    height: 12px !important;
+}
+
+/* ============================================
+   📱 SIDEBAR STYLING
+   ============================================ */
+
+.css-1d391kg {
+    background: linear-gradient(180deg, var(--surface-color), var(--background-color)) !important;
+    border-right: 2px solid var(--border-light) !important;
+}
+
+.sidebar .sidebar-content {
+    background: var(--background-color) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--spacing-lg) !important;
+}
+
+/* ============================================
+   🔔 ALERTS & MESSAGES
+   ============================================ */
+
+.stAlert {
+    border-radius: var(--radius-lg) !important;
+    border: none !important;
+    box-shadow: var(--shadow-sm) !important;
+    font-family: var(--font-family) !important;
+}
+
+.stSuccess {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(69, 160, 73, 0.05)) !important;
+    border-left: 4px solid var(--success-color) !important;
+}
+
+.stError {
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.1), rgba(218, 25, 11, 0.05)) !important;
+    border-left: 4px solid var(--error-color) !important;
+}
+
+.stWarning {
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(245, 124, 0, 0.05)) !important;
+    border-left: 4px solid var(--warning-color) !important;
+}
+
+.stInfo {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(21, 101, 192, 0.05)) !important;
+    border-left: 4px solid var(--info-color) !important;
+}
+
+/* ============================================
+   📋 TABLES & DATAFRAMES
+   ============================================ */
+
+.dataframe {
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-md) !important;
+    font-family: var(--font-family) !important;
+}
+
+.dataframe thead th {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    font-size: var(--font-size-sm) !important;
+    padding: var(--spacing-md) !important;
+    border: none !important;
+}
+
+.dataframe tbody tr:nth-child(even) {
+    background: var(--background-color) !important;
+}
+
+.dataframe tbody tr:hover {
+    background: rgba(31, 119, 180, 0.05) !important;
+    transform: scale(1.01) !important;
+    transition: all 0.2s ease !important;
+}
+
+.dataframe tbody td {
+    padding: var(--spacing-md) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    font-size: var(--font-size-sm) !important;
+}
+
+/* ============================================
+   🎭 ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-in;
+}
+
+.slide-in-up {
+    animation: slideInUp 0.6s ease-out;
+}
+
+/* ============================================
+   🔧 UTILITY CLASSES
+   ============================================ */
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-success {
+    color: var(--success-color) !important;
+}
+
+.text-error {
+    color: var(--error-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.bg-success {
+    background-color: var(--success-color) !important;
+}
+
+.bg-error {
+    background-color: var(--error-color) !important;
+}
+
+.shadow-sm {
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.shadow-md {
+    box-shadow: var(--shadow-md) !important;
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.rounded {
+    border-radius: var(--radius-md) !important;
+}
+
+.rounded-lg {
+    border-radius: var(--radius-lg) !important;
+}
+
+.rounded-xl {
+    border-radius: var(--radius-xl) !important;
+}
+
+/* ============================================
+   📱 RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .main-header {
+        font-size: var(--font-size-3xl);
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .metric-card,
+    .prediction-card {
+        padding: var(--spacing-lg);
+        margin: var(--spacing-md) 0;
+    }
+    
+    .page-container {
+        padding: var(--spacing-md);
+    }
+    
+    .chart-container {
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .prediction-card h2 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .prediction-card h3 {
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* ============================================
+   🎨 CUSTOM SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-color);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+}
+
+/* ============================================
+   🌟 SPECIAL EFFECTS
+   ============================================ */
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* ============================================
+   🔍 FOCUS STATES
+   ============================================ */
+
+*:focus {
+    outline: 2px solid var(--primary-color) !important;
+    outline-offset: 2px !important;
+    border-radius: var(--radius-sm) !important;
+}
+
+/* ============================================
+   🎯 ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Hide scrollbar for better aesthetics while maintaining functionality */
+.element::-webkit-scrollbar {
+    display: none;
+}
+
+.element {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
